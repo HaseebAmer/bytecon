@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="jest tests" tests="3" failures="1" errors="0" time="3.063">
+  <testsuite name="undefined" errors="0" failures="1" skipped="0" timestamp="2024-06-28T09:22:43" time="1.628" tests="3">
+    <testcase classname=" home page render" name=" home page render" time="0.142">
+    </testcase>
+    <testcase classname=" login page render" name=" login page render" time="0.098">
+    </testcase>
+    <testcase classname=" renders homepage and navigates to login page on button click" name=" renders homepage and navigates to login page on button click" time="0.011">
+      <failure>Error: expect(jest.fn()).toHaveBeenCalledTimes(expected)
+
+Expected number of calls: 1
+Received number of calls: 0
+    at Object.&lt;anonymous&gt; (/Users/haseebamer/p41-frontend-3/frontend/src/App.test.js:87:22)
+    at Promise.then.completed (/Users/haseebamer/p41-frontend-3/frontend/node_modules/jest-circus/build/utils.js:391:28)
+    at new Promise (&lt;anonymous&gt;)
+    at callAsyncCircusFn (/Users/haseebamer/p41-frontend-3/frontend/node_modules/jest-circus/build/utils.js:316:10)
+    at _callCircusTest (/Users/haseebamer/p41-frontend-3/frontend/node_modules/jest-circus/build/run.js:218:40)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at _runTest (/Users/haseebamer/p41-frontend-3/frontend/node_modules/jest-circus/build/run.js:155:3)
+    at _runTestsForDescribeBlock (/Users/haseebamer/p41-frontend-3/frontend/node_modules/jest-circus/build/run.js:66:9)
+    at run (/Users/haseebamer/p41-frontend-3/frontend/node_modules/jest-circus/build/run.js:25:3)
+    at runAndTransformResultsToJestFormat (/Users/haseebamer/p41-frontend-3/frontend/node_modules/jest-circus/build/legacy-code-todo-rewrite/jestAdapterInit.js:170:21)
+    at jestAdapter (/Users/haseebamer/p41-frontend-3/frontend/node_modules/jest-circus/build/legacy-code-todo-rewrite/jestAdapter.js:82:19)
+    at runTestInternal (/Users/haseebamer/p41-frontend-3/frontend/node_modules/jest-runner/build/runTest.js:389:16)
+    at runTest (/Users/haseebamer/p41-frontend-3/frontend/node_modules/jest-runner/build/runTest.js:475:34)
+    at TestRunner.runTests (/Users/haseebamer/p41-frontend-3/frontend/node_modules/jest-runner/build/index.js:101:12)
+    at TestScheduler.scheduleTests (/Users/haseebamer/p41-frontend-3/frontend/node_modules/@jest/core/build/TestScheduler.js:333:13)
+    at runJest (/Users/haseebamer/p41-frontend-3/frontend/node_modules/@jest/core/build/runJest.js:404:19)
+    at _run10000 (/Users/haseebamer/p41-frontend-3/frontend/node_modules/@jest/core/build/cli/index.js:320:7)
+    at runCLI (/Users/haseebamer/p41-frontend-3/frontend/node_modules/@jest/core/build/cli/index.js:173:3)
+    at Object.run (/Users/haseebamer/p41-frontend-3/frontend/node_modules/jest-cli/build/cli/index.js:155:37)</failure>
+    </testcase>
+  </testsuite>
+</testsuites>

@@ -1,0 +1,48 @@
+services:
+  rabbitmq:
+    image: rabbitmq:3.11.11-management
+    container_name: 'rabbitmq'
+    env_file:
+      - .env.dev
+    ports:
+      - "15672:15672"
+      - "5672:5672"
+  user_service:
+    build:
+      context: ./
+      dockerfile: ./user_service/Dockerfile
+    depends_on:
+      - rabbitmq
+    container_name: user-service
+    ports:
+      - '8000:8000'
+    environment:
+      RABBITMQ_URL: amqp://guest:guest@rabbitmq:5672/
+  event_service:
+    build:
+      context: ./
+      dockerfile: ./event_service/Dockerfile
+    depends_on:
+      - rabbitmq
+    container_name: event-service
+    ports:
+      - '8001:8001'
+    environment:
+      RABBITMQ_URL: amqp://guest:guest@rabbitmq:5672/
+  frontend:
+    build:
+      context: ./frontend
+    container_name: frontend
+    ports:
+      - '3000:3000'
+  calendar_service:
+    build:
+      context: ./
+      dockerfile: ./calendar_service/Dockerfile
+    depends_on:
+      - rabbitmq    
+    container_name: calendar-service
+    ports:
+      - '8002:8002'   
+    environment:
+      RABBITMQ_URL: amqp://guest:guest@rabbitmq:5672/
