@@ -1,0 +1,69 @@
+
+enum Tags {
+    ARTIFICIAL_INTELLIGENCE,
+    WEB_APPS,
+    CRYPTOGRAPHY,
+    ROBOTICS,
+    COMPETITIVE_PROGRAMMING,
+    EMBEDDED_SYSTEMS,
+    UX_DESIGN,
+    NETWORKS,
+    DATABASES,
+    SYSTEM_DESIGN,
+}
+
+type Event {
+    id: ID!
+    name: String!
+    tags: [Tags!]!
+    location: String!
+    description: String!
+    datetime: DateTime!
+    createdBy: Integer!
+    image: String!
+}
+
+input EventInput {
+    event_id: ID!
+    name: String!
+    tags: [Tags!]!
+    location: String!
+    description: String!
+    datetime: DateTime!
+    createdBy: Integer!
+    image: String!
+}
+
+input GetCalendarInput {
+    datetime: DateTime!
+}
+
+type GetCalendarResult {
+    calendar: [Event!]!
+}
+
+type Success {
+    success: Boolean!
+}
+
+type Error {
+    msg: String!
+    code: ErrorType!
+}
+
+enum ErrorType {
+    INTERNAL_SERVER_ERROR
+}
+
+
+union addToCalendarResult = Success | Error
+union removeFromCalendarResult = Success | Error
+
+type Mutation {
+    addToCalendar(input: EventInput!): addToCalendarResult!
+    removeFromCalendar(id: Int): removeFromCalendarResult!
+}
+
+type Query {
+    getCalendar(input: GetCalendarInput!): GetCalendarResult!
+}

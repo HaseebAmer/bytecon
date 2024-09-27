@@ -1,0 +1,58 @@
+/* CustomCalendar.css */
+
+/* Apply styles for screens less than 600px wide */
+@media (max-width: 600px) {
+    .rbc-calendar {
+        font-size: 10px; /* Adjust base font size */
+    }
+
+    .rbc-header {
+        font-size: 10px; /* Font size for calendar headers */
+    }
+
+    .rbc-day-bg {
+        font-size: 10px; /* Font size for day backgrounds */
+    }
+
+    .rbc-event {
+        font-size: 10px; /* Font size for event titles */
+    }
+
+    .rbc-agenda-event {
+        font-size: 10px; /* Font size for agenda view events */
+    }
+
+    /* Make buttons and other controls smaller */
+    .rbc-btn-group {
+        font-size: 10px; /* Font size for button groups */
+    }
+
+    .rbc-toolbar button {
+        font-size: 10px; /* Font size for toolbar buttons */
+        padding: 4px 8px; /* Adjust padding if necessary */
+    }
+
+    .rbc-toolbar {
+        font-size: 10px; /* Font size for toolbar */
+    }
+
+    .rbc-month-view {
+        font-size: 10px; /* Font size for month view */
+    }
+
+    .rbc-week-view {
+        font-size: 10px; /* Font size for week view */
+    }
+
+    .rbc-day-view {
+        font-size: 10px; /* Font size for day view */
+    }
+
+    .rbc-time-slot {
+        font-size: 10px; /* Font size for time slots */
+    }
+
+    .rbc-date-cell {
+        font-size: 10px; /* Font size for date cells */
+    }
+}
