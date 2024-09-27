@@ -1,0 +1,4 @@
+Pillow
+azure-identity
+azure-storage-blob
+python-dotenv

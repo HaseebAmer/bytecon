@@ -1,0 +1,18 @@
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "shared"
+version = "0.1.0"
+description = "shared folder for bytecon"
+
+dependencies = [
+    "azure-identity",
+    "azure-storage-blob",
+    "python-dotenv",
+    "Pillow",
+]
+
+[tool.setuptools.packages.find]
+where = ["."]

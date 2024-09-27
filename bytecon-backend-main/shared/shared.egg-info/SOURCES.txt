@@ -1,0 +1,10 @@
+pyproject.toml
+setup.cfg
+azure/__init__.py
+azure/access_azure_storage.py
+azure/access_key_vault.py
+shared.egg-info/PKG-INFO
+shared.egg-info/SOURCES.txt
+shared.egg-info/dependency_links.txt
+shared.egg-info/requires.txt
+shared.egg-info/top_level.txt

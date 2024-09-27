@@ -1,0 +1,122 @@
+enum Tags {
+    ARTIFICIAL_INTELLIGENCE,
+    WEB_APPS,
+    CRYPTOGRAPHY,
+    ROBOTICS,
+    COMPETITIVE_PROGRAMMING,
+    EMBEDDED_SYSTEMS,
+    UX_DESIGN,
+    NETWORKS,
+    DATABASES,
+    SYSTEM_DESIGN,
+}
+
+input EventInput {
+    name: String!
+    tags: [Tags!]!
+    location: String!
+    description: String!
+    datetime: DateTime!
+    image: String
+}
+
+type Event {
+    id: ID!
+    name: String!
+    tags: [Tags!]!
+    location: String!
+    description: String!
+    datetime: DateTime!
+    createdBy: Integer!
+    image: String!
+}
+
+
+type EventConnection {
+    pageInfo: PageInfo!
+    edges: [EventEdge!]!
+}
+
+type EventEdge {
+    cursor: String!
+    edge: Event!
+}
+
+type PageInfo {
+    endCursor: String
+    hasNextPage: boolean!
+}
+
+type SearchFilter {
+    search: String!
+}
+
+type RelevanceFilter {
+    tags: [Tags!]!
+}
+
+type DateFilter {
+    from_: DateTime
+    to: DateTime
+}
+
+input FilterType @oneOf {
+    searchFilter: SearchFilter
+    relevanceFilter: RelevanceFilter
+    dateFilter: DateFilter
+}
+
+enum ErrorType {
+    PERMISSION_ERROR
+    BAD_REQUEST
+    EVENT_EXISTS
+    EVENT_NOT_FOUND
+}
+
+type Error {
+    msg: String!
+    code: ErrorType!
+}
+
+type Success {
+    success: Boolean!
+}
+
+union DeleteEventResult = Success | Error
+
+input EditEvent {
+    id: Integer!
+    name: String
+    tags: [Tags!]
+    location: String
+    description: String
+    datetime: DateTime
+    image: String
+}
+
+input GetEventInput {
+    first: Integer
+    after: String
+    filter: FilterType
+}
+
+union EditEventResult = Event | Error
+
+union GetEventsResult = EventConnection | Error
+
+union CreateEventResult = Event | Error
+
+union GetSingleEventResult = Event | Error
+
+type Mutation {
+    createEvent(input: EventInput!): Event!
+    deleteEvent(id: ID!): DeleteEventResult!
+    editEvent(input: EditEvent!): EditEventResult!
+}
+
+type Query {
+    getEvents(input: GetEventInput!): GetEventsResult!
+    myEvents(first: Int, after: String): GetEventsResult!
+    getEventById(id: Int!): GetSingleEventResult!
+}
+

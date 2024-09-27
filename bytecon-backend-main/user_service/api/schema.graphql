@@ -1,0 +1,136 @@
+type User {
+    id: ID!,
+    email: String!
+    firstName: String!,
+    lastName: String!
+}
+
+type Token {
+  token: String!
+}
+
+type LoginPayload {
+    token: Token!,
+    user: User!
+}
+
+input CreateUserInput {
+    email: String!,
+    password: String!
+    firstName: String!,
+    lastName: String!
+}
+
+input LoginUserInput {
+    email: String!,
+    password: String!
+}
+
+input ChangePasswordInput {
+    oldPassword: String!
+    newPassword: String!
+}
+
+input RequestPasswordResetInput {
+    email: String!
+}
+
+input PasswordResetInput {
+    newPassword: String!,
+    emailToken: String!
+}
+
+input editBioInput {
+    bio: String!
+}
+
+input editInterestsInput {
+    interests: [Tags!]!
+}
+
+input editImageInput {
+    image: String!
+}
+
+input editNameInput {
+    firstName: String!
+    lastName: String!
+}
+
+enum ErrorType {
+    LOGIN_ERROR,
+    USER_EXISTS_ERROR,
+    INVALID_PASSWORD,
+    RESET_REQUEST_FAIL,
+    RESET_FAIL,
+}
+
+enum Tags {
+    ARTIFICIAL_INTELLIGENCE,
+    WEB_APPS,
+    CRYPTOGRAPHY,
+    ROBOTICS,
+    COMPETITIVE_PROGRAMMING,
+    EMBEDDED_SYSTEMS,
+    UX_DESIGN,
+    NETWORKS,
+    DATABASES,
+    SYSTEM_DESIGN,
+}
+
+
+type Error {
+    msg: String!
+    code: ErrorType!
+}
+
+type IdReturn {
+    id: ID!
+}
+
+// user profile
+
+
+type UserProfile {
+    user: User!,
+    bio: String!,
+    interests: [Tags!]!,
+    image: String!
+}
+
+union CreateUserResult = LoginPayload | Error
+
+union LoginResult = LoginPayload | Error
+
+union ChangePasswordResult = IdReturn | Error
+
+union ResetRequestResult = IdReturn | Error
+
+union PasswordResetResult = IdReturn | Error
+
+union EditBioResult = IdReturn | Error
+
+union EditInterestsResult = IdReturn | Error
+
+union EditProfilePicResult = IdReturn | Error
+
+union EditNameResult = IdReturn | Error
+
+type Mutation {
+    createUser(input: CreateUserInput!): CreateUserResult!,
+    login(input: LoginUserInput!): LoginResult!,
+    changePassword(input: ChangePasswordInput!): ChangePasswordResult!,
+    requestPasswordReset(input: RequestPasswordReset!): ResetRequestResult!,
+    passwordReset(input: PasswordReset!): PasswordResetResult!,
+    deleteUser: ID!,
+    editBio(input: editBioInput!): EditBioResult!,
+    editInterests(input: editInterestsInput!): EditInterestsResult!,
+    editProfilePic(input: editImageInput!): EditProfilePicResult!,
+    userProfile: UserProfile!,
+    editName(input: editNameInput!): EditNameResult!
+}
+
+type Query {
+    user(id: ID!): User,
+    me: User!
+}
